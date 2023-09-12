@@ -106,6 +106,13 @@ export const AppProvider = (props) => {
         remaining = state.budget - totalExpenses;
     }
 
+    const changeCurrency = (currency) => {
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: currency,
+        });
+    };
+
     return (
         <AppContext.Provider
             value={{
@@ -113,7 +120,8 @@ export const AppProvider = (props) => {
                 budget: state.budget,
                 remaining: remaining,
                 dispatch,
-                currency: state.currency
+                currency: state.currency,
+                changeCurrency,
             }}
         >
             {props.children}
